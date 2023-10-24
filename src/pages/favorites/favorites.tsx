@@ -1,13 +1,14 @@
-import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
-import { OfferType } from '../types/types';
-import FavoriteCard from '../components/favorite-card/favorite-card';
+import { OfferType } from '../../types/types';
+import FavoriteCard from '../../components/favorite-card/favorite-card';
 
-type MainProps = {
+type FavoritesProps = {
   offerData: OfferType[];
 };
-function Favorites({ offerData }: MainProps): JSX.Element {
+
+function Favorites({ offerData }: FavoritesProps): JSX.Element {
   return (
     <div className="page">
       <Helmet>
@@ -26,12 +27,12 @@ function Favorites({ offerData }: MainProps): JSX.Element {
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
                       <a className="locations__item-link" href="#">
-                        <span>{item.city}</span>
+                        <span>{item.city.name}</span>
                       </a>
                     </div>
                   </div>
                   <div className="favorites__places">
-                    <FavoriteCard offer={item} />
+                    <FavoriteCard offer={item} city={item.city.name} />
                   </div>
                 </li>
               ))}

@@ -1,6 +1,6 @@
-import Header from '../components/header/header';
-import { OfferType } from '../types/types';
-import OfferList from '../components/offer-list/offer-list';
+import Header from '../../components/header/header';
+import { OfferType } from '../../types/types';
+import OfferList from '../../components/offer-list/offer-list';
 
 type MainProps = {
   offerData: OfferType[];
