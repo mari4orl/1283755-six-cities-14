@@ -1,49 +1,61 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import Main from '../../pages/main';
-import Offer from '../../pages/offer';
-import Login from '../../pages/login';
-import Favorites from '../../pages/favorites';
-import NotFound from '../../pages/not-found';
+import Main from '../../pages/main/main';
+import Offer from '../../pages/offer/offer';
+import Login from '../../pages/login/login';
+import Favorites from '../../pages/favorites/favorites';
+import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
+import { HelmetProvider } from 'react-helmet-async';
+import {OfferType} from '../../types/types';
 
 type AppProps = {
-  offersCount: number;
+  offerData: OfferType[];
 }
 
-function App({offersCount}: AppProps): JSX.Element {
+function App({offerData}: AppProps): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<Main offersCount={offersCount} />}
-        />
-        <Route
-          path={AppRoute.Offer}
-          element={<Offer />}
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<Login />}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
-            >
-              <Favorites />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={<NotFound />}
-        />
-      </Routes>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Main}
+            element={<Main offerData={offerData} />}
+          />
+          <Route
+            path={`${AppRoute.Offer}/:offerId`}
+            element={<Offer />}
+          />
+          <Route
+            path={AppRoute.Login}
+            element={
+              <PrivateRoute
+                restrictedFor={AuthorizationStatus.Auth}
+                redirectTo={AppRoute.Main}
+              >
+                <Login />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute
+                restrictedFor={AuthorizationStatus.Auth}
+                redirectTo={AppRoute.Login}
+              >
+                <Favorites offerData={offerData} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
+        </Routes>
 
-    </BrowserRouter>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
