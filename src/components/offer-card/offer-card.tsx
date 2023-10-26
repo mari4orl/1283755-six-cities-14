@@ -1,24 +1,26 @@
-import { PointerEvent, useState } from 'react';
 import { OfferType } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 type OfferProps = {
   offer: OfferType;
+  onCardHover?: (offerId:OfferType['id'] | null) => void;
 };
 
-function OfferCard({ offer }: OfferProps): JSX.Element {
-  const [activeOffer, setActiveOffer] = useState({id: ''});
-  // console.log(activeOffer);
+function OfferCard({ offer, onCardHover }: OfferProps): JSX.Element {
+  const handleMouseEnter = () => {
+    onCardHover?.(offer.id);
+  };
+
+  const handleMouseLeave = () => {
+    onCardHover?.(null);
+  };
 
   return (
     <article
       className="cities__card place-card"
-      onMouseOver={({ target }: PointerEvent<HTMLInputElement>) => {
-        console.log(target);
-        // #TODO
-        // setActiveOffer({...activeOffer, id: target.id });
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {offer.isPremium && (
         <div className="place-card__mark">
