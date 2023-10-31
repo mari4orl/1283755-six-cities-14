@@ -1,12 +1,23 @@
 import Header from '../../components/header/header';
 import { OfferType } from '../../types/types';
 import OfferList from '../../components/offer-list/offer-list';
+import Map from '../../components/map/map';
+import { useState } from 'react';
 
 type MainProps = {
   offerData: OfferType[];
 };
 
 function Main({ offerData }: MainProps): JSX.Element {
+  const [activeOffer, setActiveOffer] = useState<OfferType | undefined>();
+
+  const handleListItemHover = (selectedCardId:OfferType['id'] | null) => {
+    const currentPoint: OfferType | undefined = offerData.find((offer) =>
+      offer.id === selectedCardId,
+    );
+    setActiveOffer(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -82,10 +93,10 @@ function Main({ offerData }: MainProps): JSX.Element {
                     </li>
                   </ul>
                 </form>
-                <OfferList offerData={offerData} />
+                <OfferList offerData={offerData} onListItemHover={handleListItemHover} />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <Map points={offerData} city={offerData[0].city} selectedPoint={activeOffer} />
               </div>
             </div>
           ) : (

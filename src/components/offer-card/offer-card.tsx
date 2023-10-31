@@ -4,16 +4,16 @@ import { AppRoute } from '../../const';
 
 type OfferProps = {
   offer: OfferType;
-  onCardHover?: (offerId:OfferType['id'] | null) => void;
+  onListItemHover?: (offerId:OfferType['id'] | null) => void;
 };
 
-function OfferCard({ offer, onCardHover }: OfferProps): JSX.Element {
+function OfferCard({ offer, onListItemHover }: OfferProps): JSX.Element {
   const handleMouseEnter = () => {
-    onCardHover?.(offer.id);
+    onListItemHover?.(offer.id);
   };
 
   const handleMouseLeave = () => {
-    onCardHover?.(null);
+    onListItemHover?.(null);
   };
 
   return (
