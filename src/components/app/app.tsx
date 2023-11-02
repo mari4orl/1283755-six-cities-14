@@ -7,13 +7,14 @@ import Favorites from '../../pages/favorites/favorites';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import {OfferType} from '../../types/types';
+import {OfferType, ReviewType} from '../../types/types';
 
 type AppProps = {
   offerData: OfferType[];
+  reviewData: ReviewType[];
 }
 
-function App({offerData}: AppProps): JSX.Element {
+function App({offerData, reviewData}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -24,7 +25,7 @@ function App({offerData}: AppProps): JSX.Element {
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
-            element={<Offer />}
+            element={<Offer reviewData={reviewData} />}
           />
           <Route
             path={AppRoute.Login}
