@@ -11,21 +11,21 @@ type MapProps = {
   selectedPoint: OfferType | undefined;
 };
 
+const defaultCustomIcon = leaflet.icon({
+  iconUrl: URL_MARKER_DEFAULT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+const currentCustomIcon = leaflet.icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
 function Map({city, points, selectedPoint}: MapProps): JSX.Element {
-  const mapRef = useRef<HTMLInputElement>(null); // #TODO
-  const map = useMap(mapRef, city);
-
-  const defaultCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
-  const currentCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_CURRENT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
+  const mapRef = useRef<HTMLElement>(null);
+  const map = useMap({ mapRef, city });
 
   useEffect(() => {
     if (map) {

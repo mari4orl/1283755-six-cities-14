@@ -1,15 +1,15 @@
-import {useEffect, useState, useRef} from 'react';
-import leaflet from 'leaflet';
+import {useEffect, useState, useRef, MutableRefObject} from 'react';
+import leaflet, {Map} from 'leaflet';
 import { OfferType } from '../types/types';
 
 type useMapProps = {
   city: OfferType['city'];
-  mapRef: HTMLInputElement; // #TODO
+  mapRef: MutableRefObject<HTMLElement | null>;
 };
 
-function useMap(mapRef, city: useMapProps['city']) {
-  const [map, setMap] = useState(null); // #TODO
-  const isRenderedRef = useRef(false);
+function useMap({ mapRef, city }: useMapProps) {
+  const [map, setMap] = useState<Map | null>(null);
+  const isRenderedRef = useRef<boolean>(false);
 
   useEffect(() => {
     if (mapRef.current !== null && !isRenderedRef.current) {
