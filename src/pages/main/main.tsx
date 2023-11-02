@@ -96,7 +96,7 @@ function Main({ offerData }: MainProps): JSX.Element {
                 <OfferList offerData={offerData} onListItemHover={handleListItemHover} />
               </section>
               <div className="cities__right-section">
-                <Map points={offerData} city={offerData[0].city} selectedPoint={activeOffer} />
+                <Map points={offerData} city={offerData[0].city} selectedPoint={activeOffer} className={'cities__map'} />
               </div>
             </div>
           ) : (
