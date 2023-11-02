@@ -7,11 +7,13 @@ import Favorites from '../../pages/favorites/favorites';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import {OfferType, ReviewType} from '../../types/types';
+import {OfferType, ReviewType, NearPlacesType} from '../../types/types';
+import { nearPlaces } from '../../mocks/near-places';
 
 type AppProps = {
   offerData: OfferType[];
   reviewData: ReviewType[];
+  nearPlaces: NearPlacesType[];
 }
 
 function App({offerData, reviewData}: AppProps): JSX.Element {
@@ -25,7 +27,7 @@ function App({offerData, reviewData}: AppProps): JSX.Element {
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
-            element={<Offer reviewData={reviewData} offerData={offerData} />}
+            element={<Offer reviewData={reviewData} offerData={offerData} nearPlaces={nearPlaces} />}
           />
           <Route
             path={AppRoute.Login}

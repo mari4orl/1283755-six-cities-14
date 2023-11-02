@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import ReviewForm from './review-form';
-import { OfferType, ReviewType } from '../../types/types';
+import { NearPlacesType, OfferType, ReviewType } from '../../types/types';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import OfferList from '../../components/offer-list/offer-list';
@@ -9,9 +9,10 @@ import OfferList from '../../components/offer-list/offer-list';
 type OfferProps = {
   reviewData: ReviewType[];
   offerData: OfferType[];
+  nearPlaces: NearPlacesType[];
 };
 
-function Offer({ reviewData, offerData }: OfferProps): JSX.Element {
+function Offer({ reviewData, offerData, nearPlaces }: OfferProps): JSX.Element {
   return (
     <div className="page">
       <Helmet>
@@ -165,7 +166,7 @@ function Offer({ reviewData, offerData }: OfferProps): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              <OfferList offerData={offerData} className='near-places__card' />
+              <OfferList offerData={nearPlaces} className='near-places__card' />
             </div>
           </section>
         </div>
