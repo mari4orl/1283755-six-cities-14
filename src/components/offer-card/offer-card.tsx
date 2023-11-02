@@ -5,9 +5,10 @@ import { AppRoute } from '../../const';
 type OfferProps = {
   offer: OfferType;
   onListItemHover?: (offerId:OfferType['id'] | null) => void;
+  className?: string;
 };
 
-function OfferCard({ offer, onListItemHover }: OfferProps): JSX.Element {
+function OfferCard({ offer, onListItemHover, className }: OfferProps): JSX.Element {
   const handleMouseEnter = () => {
     onListItemHover?.(offer.id);
   };
@@ -18,7 +19,7 @@ function OfferCard({ offer, onListItemHover }: OfferProps): JSX.Element {
 
   return (
     <article
-      className="cities__card place-card"
+      className={`${className ? className : 'cities__card'} place-card`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

@@ -93,10 +93,12 @@ function Main({ offerData }: MainProps): JSX.Element {
                     </li>
                   </ul>
                 </form>
-                <OfferList offerData={offerData} onListItemHover={handleListItemHover} />
+                <div className="cities__places-list places__list tabs__content">
+                  <OfferList offerData={offerData} onListItemHover={handleListItemHover} />
+                </div>
               </section>
               <div className="cities__right-section">
-                <Map points={offerData} city={offerData[0].city} selectedPoint={activeOffer} />
+                <Map points={offerData} city={offerData[0].city} selectedPoint={activeOffer} className={'cities__map'} />
               </div>
             </div>
           ) : (

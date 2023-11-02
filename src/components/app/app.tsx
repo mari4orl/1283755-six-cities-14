@@ -25,7 +25,7 @@ function App({offerData, reviewData}: AppProps): JSX.Element {
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
-            element={<Offer reviewData={reviewData} />}
+            element={<Offer reviewData={reviewData} offerData={offerData} />}
           />
           <Route
             path={AppRoute.Login}
