@@ -8,7 +8,6 @@ import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import {OfferType, ReviewType, NearPlacesType} from '../../types/types';
-import { nearPlaces } from '../../mocks/near-places';
 
 type AppProps = {
   offerData: OfferType[];
@@ -16,7 +15,7 @@ type AppProps = {
   nearPlaces: NearPlacesType[];
 }
 
-function App({offerData, reviewData}: AppProps): JSX.Element {
+function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
