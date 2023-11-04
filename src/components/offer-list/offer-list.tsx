@@ -4,15 +4,16 @@ import OfferCard from '../offer-card/offer-card';
 type OfferListProps = {
   offerData: OfferType[];
   onListItemHover?: (offerId:OfferType['id'] | null) => void;
+  className?: string;
 };
 
-function OfferList({offerData, onListItemHover}: OfferListProps): JSX.Element {
+function OfferList({offerData, onListItemHover, className}: OfferListProps): JSX.Element {
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <>
       {offerData.map((item: OfferType) => (
-        <OfferCard key={item.id} offer={item} onListItemHover={onListItemHover} />
+        <OfferCard key={item.id} offer={item} onListItemHover={onListItemHover} className={className} />
       ))}
-    </div>
+    </>
   );
 }
 
