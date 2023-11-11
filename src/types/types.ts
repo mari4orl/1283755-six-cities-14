@@ -1,3 +1,5 @@
+import { store } from '../store';
+
 type Location = {
   'latitude': number;
   'longitude': number;
@@ -78,3 +80,6 @@ export type NearPlacesType = {
   title: string;
   type: string;
 }
+
+export type TypeState = ReturnType<typeof store.getState>;
+export type TypeAppDispatch = typeof store.dispatch;
