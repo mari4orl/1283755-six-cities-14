@@ -22,7 +22,7 @@ function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<Main offerData={offerData} />}
+            element={<Main />}
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
