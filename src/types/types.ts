@@ -1,3 +1,4 @@
+import { SortOption } from '../const';
 import { store } from '../store';
 
 type Location = {
@@ -83,3 +84,5 @@ export type NearPlacesType = {
 
 export type TypeState = ReturnType<typeof store.getState>;
 export type TypeAppDispatch = typeof store.dispatch;
+
+export type SortingType = keyof typeof SortOption;
