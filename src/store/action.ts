@@ -4,6 +4,8 @@ import { SortOption } from '../const';
 
 export const changeCity = createAction<{activeCity: string}>('offers/changeCity');
 
-export const fetchOffers = createAction<{offers: OfferType[]}>('offers/fetchOffers');
+export const fetchOffers = createAction<OfferType[]>('offers/fetchOffers');
 
 export const setSortedType = createAction<{activeSortedType: typeof SortOption[SortingType]}>('offers/setSortedType');
+
+export const setOffersDataLoadingStatus = createAction<boolean>('data/setDataLoadingStatus');
