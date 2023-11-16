@@ -1,7 +1,7 @@
 import { SortOption } from '../const';
 
 import { OfferType, SortingType } from '../types/types';
-import { changeCity, fetchOffers, setSortedType, setOffersDataLoadingStatus } from './action';
+import { changeCity, fetchOffers, setSortedType, setOffersDataLoadingStatus, fetchFavorites } from './action';
 import {createReducer} from '@reduxjs/toolkit';
 
 type reducerTypes = {
@@ -9,6 +9,7 @@ type reducerTypes = {
   offers: OfferType[];
   activeSortedType: typeof SortOption[SortingType];
   isOffersDataLoading: boolean;
+  favorites: OfferType[];
 }
 
 const initialState: reducerTypes = {
@@ -16,6 +17,7 @@ const initialState: reducerTypes = {
   offers: [],
   activeSortedType: SortOption.Popular,
   isOffersDataLoading: false,
+  favorites:[]
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -25,6 +27,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(fetchOffers, (state, action) => {
       state.offers = action.payload;
+    })
+    .addCase(fetchFavorites, (state, action) => {
+      state.favorites = action.payload; //TODO
     })
     .addCase(setSortedType, (state, action) => {
       state.activeSortedType = action.payload.activeSortedType;
