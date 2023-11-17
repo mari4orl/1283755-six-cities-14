@@ -27,6 +27,14 @@ export enum SortOption {
   TopRatedFirst = 'Top rated first'
 }
 
+export enum APIRoute {
+  Offers = '/offers',
+  Nearby = '/nearby',
+  Comments = '/comments',
+  Login = '/login',
+  Logout = '/logout',
+}
+
 export const URL_MARKER_DEFAULT = 'img/pin.svg';
 
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';

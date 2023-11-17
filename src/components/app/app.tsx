@@ -8,6 +8,8 @@ import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import {OfferType, ReviewType, NearPlacesType} from '../../types/types';
+import { useAppSelector } from '../../hooks';
+import Loading from '../../pages/loading/loading';
 
 type AppProps = {
   offerData: OfferType[];
@@ -16,6 +18,13 @@ type AppProps = {
 }
 
 function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
+  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
+
+  if (isOffersDataLoading) {
+    return (
+      <Loading />
+    );
+  }
   return (
     <HelmetProvider>
       <BrowserRouter>
