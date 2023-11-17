@@ -21,7 +21,7 @@ export type OfferType = {
     'isPro': boolean;
     'name': string;
   };
-  'id': string;
+  'id': number;
   'images': string[];
   'isFavorite': boolean;
   'isPremium': boolean;
