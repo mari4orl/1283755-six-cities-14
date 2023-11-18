@@ -82,6 +82,19 @@ export type NearPlacesType = {
   type: string;
 }
 
+export type AuthData = {
+  login: string;
+  password: string;
+}
+
+export type UserData = {
+  avatarUrl: string;
+  email: string;
+  isPro: boolean;
+  name: string;
+  token: string;
+};
+
 export type TypeState = ReturnType<typeof store.getState>;
 export type TypeAppDispatch = typeof store.dispatch;
 
