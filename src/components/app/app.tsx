@@ -55,7 +55,7 @@ function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                restrictedFor={AuthorizationStatus.Auth}
+                restrictedFor={AuthorizationStatus.NoAuth}
                 redirectTo={AppRoute.Login}
               >
                 <Favorites offerData={offerData} />
