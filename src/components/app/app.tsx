@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import Main from '../../pages/main/main';
 import Offer from '../../pages/offer/offer';
@@ -10,6 +10,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import {OfferType, ReviewType, NearPlacesType} from '../../types/types';
 import { useAppSelector } from '../../hooks';
 import Loading from '../../pages/loading/loading';
+import HistoryRouter from '../history-router/history-router';
+import browserHistory from '../../browser-history';
 
 type AppProps = {
   offerData: OfferType[];
@@ -28,7 +30,7 @@ function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
   }
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
             path={AppRoute.Main}
@@ -66,7 +68,7 @@ function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
           />
         </Routes>
 
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }

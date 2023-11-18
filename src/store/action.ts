@@ -1,6 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 import { OfferType, SortingType } from '../types/types';
-import { AuthorizationStatus, SortOption } from '../const';
+import { AppRoute, AuthorizationStatus, SortOption } from '../const';
 
 export const changeCity = createAction<{activeCity: string}>('offers/changeCity');
 
@@ -13,3 +13,5 @@ export const setSortedType = createAction<{activeSortedType: typeof SortOption[S
 export const setOffersDataLoadingStatus = createAction<boolean>('data/setDataLoadingStatus');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+
+export const redirectToRoute = createAction<AppRoute>('redirectToRoute');
