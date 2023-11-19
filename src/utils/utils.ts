@@ -1,5 +1,5 @@
-import {SortOption} from '../const';
-import {OfferType} from '../types/types';
+import {AuthorizationStatus, SortOption} from '../const';
+import {OfferType, TypeState} from '../types/types';
 
 function sortByOption (offers: OfferType[], activeSortedType: string) {
   switch (activeSortedType) {
@@ -16,4 +16,9 @@ function sortByOption (offers: OfferType[], activeSortedType: string) {
   }
 }
 
-export {sortByOption};
+function chechkAuthStatus (state: TypeState): boolean {
+  const authorizationStatus = state.authorizationStatus;
+  return authorizationStatus === AuthorizationStatus.Auth;
+}
+
+export {sortByOption, chechkAuthStatus};

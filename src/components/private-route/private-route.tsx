@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
 
 type PrivateRouteProps = {
   restrictedFor: AuthorizationStatus;
@@ -8,7 +9,7 @@ type PrivateRouteProps = {
 }
 
 function PrivateRoute({restrictedFor, redirectTo, children}: PrivateRouteProps) {
-  const authorizationStatus = AuthorizationStatus.NoAuth;
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
     restrictedFor === authorizationStatus
