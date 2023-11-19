@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
 import { useAppSelector } from '../../hooks';
 import LoggedInNav from './logged-in-nav';
-import { AuthorizationStatus } from '../../const';
 import LoggedOutNav from './logged-out-nav';
+import { chechkAuthStatus } from '../../utils/utils';
 
 function Nav(): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
+  const isAuth = useAppSelector(chechkAuthStatus);
   const getCurrentHeaderItem = useMemo(
     () => (isAuth) ? LoggedInNav : LoggedOutNav,
     [isAuth]

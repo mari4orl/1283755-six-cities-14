@@ -1,37 +1,32 @@
 import { Helmet } from 'react-helmet-async';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import { Link, Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
-import { AuthData } from '../../types/types';
 import { FormEvent, useRef } from 'react';
+import { chechkAuthStatus } from '../../utils/utils';
 
 function Login(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isAuth = useAppSelector(chechkAuthStatus);
 
-  if (authorizationStatus === AuthorizationStatus.Auth) {
+  if (isAuth) {
     return (
       <Navigate to={AppRoute.Main} />
     );
   }
 
-  const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
-  };
-
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
     if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
+      dispatch(loginAction({
         login: loginRef.current.value,
         password: passwordRef.current.value
-      });
+      }));
     }
-
   };
 
   return (
