@@ -1,6 +1,6 @@
-import { OfferType } from '../types/types';
+import { PreviewOfferType } from '../types/types';
 
-export const offerData: OfferType[] = [
+export const offerData: PreviewOfferType[] = [
   {
     'city': {
       'name': 'Amsterdam',

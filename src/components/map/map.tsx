@@ -3,12 +3,12 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
-import { OfferType } from '../../types/types';
+import { PreviewOfferType } from '../../types/types';
 
 type MapProps = {
-  points: OfferType[];
-  city: OfferType['city'];
-  selectedPoint?: OfferType | undefined;
+  points: PreviewOfferType[];
+  city: PreviewOfferType['city'];
+  selectedPoint?: PreviewOfferType | undefined;
   className: string;
 };
 

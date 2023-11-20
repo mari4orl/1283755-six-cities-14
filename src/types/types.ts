@@ -7,80 +7,64 @@ type Location = {
   'zoom': number;
 }
 
+export type PreviewOfferType = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: {
+    name: string;
+    location: Location;
+  };
+  location: Location;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  previewImage: string;
+}
+
 export type OfferType = {
-  'bedrooms': number;
-  'city': {
-    'location': Location;
-    'name': string;
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: {
+    name: string;
+    location: Location;
   };
-  'description': string;
-  'goods': string[];
-  'host': {
-    'avatarUrl': string;
-    'id': number;
-    'isPro': boolean;
-    'name': string;
+  location: Location;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  description: string;
+  bedrooms: number;
+  goods: string[];
+  host: {
+    name: string;
+    avatarUrl: string;
+    isPro: boolean;
   };
-  'id': number;
-  'images': string[];
-  'isFavorite': boolean;
-  'isPremium': boolean;
-  'location': Location;
-  'maxAdults': number;
-  'previewImage': string;
-  'price': number;
-  'rating': number;
-  'title': string;
-  'type': string;
+  images: string[];
+  maxAdults: number;
 }
 
 export type ReviewType = {
-  'comment': string;
-  'date': string;
-  'id': number;
-  'rating': number;
-  'user': {
-    'avatarUrl': string;
-    'id': number;
-    'isPro': boolean;
-    'name': string;
+  id: string;
+  date: string;
+  user: {
+    name: string;
+    avatarUrl: string;
+    isPro: boolean;
   };
+  comment: string;
+  rating: number;
 }
 
-export type NearPlacesType = {
-  bedrooms: number;
-  city: {
-    location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-    };
-    name: string;
-  };
-  description: string;
-  goods: string[];
-  host: {
-    avatarUrl: string;
-    id: number;
-    isPro: boolean;
-    name: string;
-  };
-  id: number;
-  images: string[];
-  isFavorite: boolean;
-  isPremium: boolean;
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  maxAdults: number;
-  previewImage: string;
-  price: number;
+export type PostReviewType = {
+  id: string;
   rating: number;
-  title: string;
-  type: string;
-}
+  comment: string;
+};
 
 export type AuthData = {
   login: string;

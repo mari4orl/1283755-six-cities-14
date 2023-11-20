@@ -1,11 +1,8 @@
 import { ReviewType } from '../../types/types';
+import { getRatingWidth } from '../../utils/utils';
 
 type ReviewProps = {
   review: ReviewType;
-};
-
-const getRatingWidth = function(rating:ReviewType['rating']):number {
-  return Math.round(rating) * 20;
 };
 
 const getDate = function(date: string) {

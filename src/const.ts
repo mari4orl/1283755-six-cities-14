@@ -35,6 +35,17 @@ export enum APIRoute {
   Logout = '/logout',
 }
 
+export enum Status {
+  Idle = 'idle',
+  Loading = 'loading',
+  Success = 'success',
+  Error = 'error',
+}
+
 export const URL_MARKER_DEFAULT = 'img/pin.svg';
 
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+
+export const MAX_NEAR_PLACES = 3;
+
+export const MAX_REVIEWS = 10;

@@ -1,12 +1,18 @@
 import {createAction} from '@reduxjs/toolkit';
-import { OfferType, SortingType } from '../types/types';
+import { PreviewOfferType, ReviewType, SortingType } from '../types/types';
 import { AppRoute, AuthorizationStatus, SortOption } from '../const';
 
 export const changeCity = createAction<{activeCity: string}>('offers/changeCity');
 
-export const loadOffers = createAction<OfferType[]>('offers/loadOffers');
+// export const loadOffers = createAction<PreviewOfferType[]>('offers/loadOffers');
 
-export const fetchFavorites = createAction<OfferType[]>('favorites/fetchFavorites');
+// export const loadOffer = createAction<PreviewOfferType>('offer/loadOffer');
+
+export const dropOffer = createAction('offer/dropOffer');
+
+export const loadReviews = createAction<ReviewType[]>('reviews/loadReviews');
+
+export const fetchFavorites = createAction<PreviewOfferType[]>('favorites/fetchFavorites');
 
 export const setSortedType = createAction<{activeSortedType: typeof SortOption[SortingType]}>('offers/setSortedType');
 
