@@ -43,7 +43,7 @@ export const fetchOfferAction = createAsyncThunk<
 
 export const fetchReviewsAction = createAsyncThunk<
   ReviewType[],
-  PreviewOfferType['id'],
+  OfferType['id'],
   ExtraType
 >('reviews/fetchComments', async (offerId, { extra: api }) => {
   const { data } = await api.get<ReviewType[]>(
@@ -52,17 +52,13 @@ export const fetchReviewsAction = createAsyncThunk<
   return data;
 });
 
-export const postReviewAction = createAsyncThunk<
-  ReviewType,
-  PostReviewType,
-  ExtraType
->('reviews/postComments', async ({ id, rating, comment }, { extra: api }) => {
-  const { data } = await api.post<ReviewType>(`${APIRoute.Comments}/${id}`, {
-    comment,
-    rating,
-  });
-  return data;
-});
+export const postReviewAction = createAsyncThunk<ReviewType, PostReviewType, ExtraType>(
+  'reviews/postComments',
+  async ({id, rating, comment}, {extra: api}) => {
+    const {data} = await api.post<ReviewType>(`${APIRoute.Comments}/${id}`, {comment, rating});
+    return data;
+  },
+);
 
 export const fetchNearPlacesAction = createAsyncThunk<
   PreviewOfferType[],

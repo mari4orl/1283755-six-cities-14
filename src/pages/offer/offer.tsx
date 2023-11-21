@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
-import ReviewForm from './review-form';
-import { PreviewOfferType } from '../../types/types';
+import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import OfferList from '../../components/offer-list/offer-list';
@@ -134,16 +133,12 @@ function Offer(): JSX.Element {
                   </p>
                 </div>
               </div>
-              {/* <section className="offer__reviews reviews">
-                <h2 className="reviews__title">
-                  Reviews &middot; <span className="reviews__amount">{reviews.length}</span>
-                </h2>
-                <ReviewsList reviewData={reviews} />
-                <ReviewForm />
-              </section> TODO */}
+              <ReviewsList>
+                {isAuth && <ReviewForm offerId={currentOffer.id}/>}
+              </ReviewsList>
             </div>
           </div>
-          <Map points={[...nearPlacesToRender, currentOffer]} city={currentOffer.city} className={'offer__map'} />
+          <Map points={nearPlacesToRender} currentPoint={currentOffer} city={currentOffer.city} className={'offer__map'} />
         </section>
         <div className="container">
           <section className="near-places places">

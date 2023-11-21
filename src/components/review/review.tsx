@@ -20,9 +20,9 @@ function Review({ review }: ReviewProps): JSX.Element {
           <img
             className="reviews__avatar user__avatar"
             src={review.user.avatarUrl}
-            width="54"
-            height="54"
-            alt="Reviews avatar"
+            width={54}
+            height={54}
+            alt={`${'Reviews avatar'} ${review.user.name}`}
           />
         </div>
         <span className="reviews__user-name">{review.user.name}</span>

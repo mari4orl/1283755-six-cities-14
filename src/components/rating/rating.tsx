@@ -1,5 +1,8 @@
 import {Fragment} from 'react';
 import {ChangeEvent} from 'react';
+import { useAppSelector } from '../../hooks';
+import { TypeState } from '../../types/types';
+import { Status } from '../../const';
 
 const ratingReview = [
   {title: 'perfect', value: '5'},
@@ -15,6 +18,10 @@ type RatingProp = {
 }
 
 function Rating({rating, onChange}: RatingProp) {
+  const statusPost = useAppSelector(
+    (state: TypeState): Status => state.statusPost
+  );
+
   return (
     <div className="reviews__rating-form form__rating">
       {ratingReview.map(({title, value}) => (
@@ -27,14 +34,15 @@ function Rating({rating, onChange}: RatingProp) {
             type="radio"
             onChange={onChange}
             checked={rating === value}
+            disabled={statusPost === Status.Loading}
           />
           <label
             htmlFor={`${value}-stars`}
             className="reviews__rating-label form__rating-label"
             title={title}
           >
-            <svg className="form__star-image" width="37" height="33">
-              <use xlinkHref="#icon-star"></use>
+            <svg className="form__star-image" width={37} height={33}>
+              <use xlinkHref="#icon-star" />
             </svg>
           </label>
         </Fragment>

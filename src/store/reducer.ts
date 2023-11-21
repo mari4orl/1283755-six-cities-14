@@ -1,7 +1,7 @@
 import { AuthorizationStatus, CityName, SortOption, Status } from '../const';
 
 import { OfferType, PreviewOfferType, ReviewType, SortingType, UserData } from '../types/types';
-import { changeCity, setSortedType, fetchFavorites, loadReviews, dropOffer } from './action';
+import { changeCity, setSortedType, fetchFavorites, dropOffer } from './action';
 import {createReducer} from '@reduxjs/toolkit';
 import { checkAuthAction, fetchNearPlacesAction, fetchOfferAction, fetchOffersAction, fetchReviewsAction, loginAction, logoutAction, postReviewAction } from './api-actions';
 
@@ -42,21 +42,15 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(changeCity, (state, action) => {
       state.activeCity = action.payload.activeCity;
     })
-    // .addCase(loadOffers, (state, action) => {
-    //   state.offers = action.payload;
-    // })
-    // .addCase(loadOffer, (state, action) => {
-    //   state.offer = action.payload;
-    // })
     .addCase(dropOffer, (state) => {
       state.offer = null;
     })
     .addCase(fetchFavorites, (state) => {
       state.favorites = state.offers.filter((offer) => offer.isFavorite); //TODO
     })
-    .addCase(loadReviews, (state, action) => {
-      state.reviews = action.payload;
-    })
+    // .addCase(loadReviews, (state, action) => {
+    //   state.reviews = action.payload;
+    // })
     .addCase(setSortedType, (state, action) => {
       state.activeSortedType = action.payload.activeSortedType;
     })
