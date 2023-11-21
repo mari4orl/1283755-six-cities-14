@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import {useState} from 'react';
-import {OfferType} from '../../types/types';
+import {OfferType, PreviewOfferType} from '../../types/types';
 
 type TButtonBookmarkProp = {
-  offer: OfferType;
+  offer: OfferType | PreviewOfferType;
   islarge?: boolean;
 }
 

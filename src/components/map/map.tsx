@@ -3,14 +3,14 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
-import { OfferType, PreviewOfferType } from '../../types/types';
+import { PreviewOfferType } from '../../types/types';
 
 type MapProps = {
   points: PreviewOfferType[];
   city: PreviewOfferType['city'];
   selectedPoint?: PreviewOfferType | undefined;
   className: string;
-  currentPoint?: OfferType; //TODO
+  // currentPoint?: OfferType; //TODO
 };
 
 const defaultCustomIcon = leaflet.icon({
@@ -25,7 +25,7 @@ const currentCustomIcon = leaflet.icon({
   iconAnchor: [14, 40]
 });
 
-function Map({city, points, selectedPoint, className, currentPoint}: MapProps): JSX.Element {
+function Map({city, points, selectedPoint, className}: MapProps): JSX.Element {
   const mapRef = useRef<HTMLElement>(null);
   const map = useMap({ mapRef, city });
 

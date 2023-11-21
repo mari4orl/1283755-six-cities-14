@@ -138,7 +138,7 @@ function Offer(): JSX.Element {
               </ReviewsList>
             </div>
           </div>
-          <Map points={nearPlacesToRender} currentPoint={currentOffer} city={currentOffer.city} className={'offer__map'} />
+          <Map points={nearPlacesToRender} city={currentOffer.city} className={'offer__map'} />
         </section>
         <div className="container">
           <section className="near-places places">
