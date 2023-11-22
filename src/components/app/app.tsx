@@ -7,27 +7,13 @@ import Favorites from '../../pages/favorites/favorites';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import {OfferType, ReviewType, NearPlacesType} from '../../types/types';
 import { useAppSelector } from '../../hooks';
-import Loading from '../../pages/loading/loading';
 import HistoryRouter from '../history-router/history-router';
 import browserHistory from '../../browser-history';
 
-type AppProps = {
-  offerData: OfferType[];
-  reviewData: ReviewType[];
-  nearPlaces: NearPlacesType[];
-}
-
-function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
+function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 
-  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
-    return (
-      <Loading />
-    );
-  }
   return (
     <HelmetProvider>
       <HistoryRouter history={browserHistory}>
@@ -38,7 +24,7 @@ function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
           />
           <Route
             path={`${AppRoute.Offer}/:offerId`}
-            element={<Offer reviewData={reviewData} offerData={offerData} nearPlaces={nearPlaces} />}
+            element={<Offer />}
           />
           <Route
             path={AppRoute.Login}
@@ -55,10 +41,10 @@ function App({offerData, reviewData, nearPlaces}: AppProps): JSX.Element {
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                restrictedFor={AuthorizationStatus.NoAuth}
+                restrictedFor={authorizationStatus}
                 redirectTo={AppRoute.Login}
               >
-                <Favorites offerData={offerData} />
+                <Favorites />
               </PrivateRoute>
             }
           />

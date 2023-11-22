@@ -1,5 +1,5 @@
 import Header from '../../components/header/header';
-import { OfferType } from '../../types/types';
+import { PreviewOfferType } from '../../types/types';
 import OfferList from '../../components/offer-list/offer-list';
 import Map from '../../components/map/map';
 import { useState } from 'react';
@@ -10,17 +10,17 @@ import Sorting from '../../components/sorting/sorting';
 import {sortByOption} from '../../utils/utils';
 
 function Main(): JSX.Element {
-  const [activeOffer, setActiveOffer] = useState<OfferType | undefined>();
+  const [activeOffer, setActiveOffer] = useState<PreviewOfferType | undefined>();
 
-  const offers: OfferType[] = useAppSelector((state: TypeState) => state.offers);
+  const offers: PreviewOfferType[] = useAppSelector((state: TypeState) => state.offers);
   const activeCity = useAppSelector((state: TypeState): string => state.activeCity);
   const filteredOffers = offers.filter((offer) => offer.city.name === activeCity);
 
   const activeSortType = useAppSelector((state: TypeState): string => state.activeSortedType);
   const currentOffers = sortByOption(filteredOffers, activeSortType);
 
-  const handleListItemHover = (selectedCardId:OfferType['id'] | null) => {
-    const currentPoint: OfferType | undefined = filteredOffers.find((offer) =>
+  const handleListItemHover = (selectedCardId:PreviewOfferType['id'] | null) => {
+    const currentPoint: PreviewOfferType | undefined = filteredOffers.find((offer) =>
       offer.id === selectedCardId,
     );
     setActiveOffer(currentPoint);
@@ -46,7 +46,7 @@ function Main(): JSX.Element {
                 </div>
               </section>
               <div className="cities__right-section">
-                <Map points={currentOffers} city={currentOffers[0].city} selectedPoint={activeOffer} className={'cities__map'} />
+                <Map points={currentOffers} city={currentOffers[0].city} selectedPoint={activeOffer?.id} className={'cities__map'} />
               </div>
             </div>
           ) : (

@@ -1,11 +1,8 @@
 import { ReviewType } from '../../types/types';
+import { getRatingWidth } from '../../utils/utils';
 
 type ReviewProps = {
   review: ReviewType;
-};
-
-const getRatingWidth = function(rating:ReviewType['rating']):number {
-  return Math.round(rating) * 20;
 };
 
 const getDate = function(date: string) {
@@ -23,9 +20,9 @@ function Review({ review }: ReviewProps): JSX.Element {
           <img
             className="reviews__avatar user__avatar"
             src={review.user.avatarUrl}
-            width="54"
-            height="54"
-            alt="Reviews avatar"
+            width={54}
+            height={54}
+            alt={`${'Reviews avatar'} ${review.user.name}`}
           />
         </div>
         <span className="reviews__user-name">{review.user.name}</span>

@@ -1,9 +1,9 @@
 import {useEffect, useState, useRef, MutableRefObject} from 'react';
 import leaflet, {Map} from 'leaflet';
-import { OfferType } from '../types/types';
+import { PreviewOfferType } from '../types/types';
 
 type useMapProps = {
-  city: OfferType['city'];
+  city: PreviewOfferType['city'];
   mapRef: MutableRefObject<HTMLElement | null>;
 };
 

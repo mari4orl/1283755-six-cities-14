@@ -7,80 +7,50 @@ type Location = {
   'zoom': number;
 }
 
-export type OfferType = {
-  'bedrooms': number;
-  'city': {
-    'location': Location;
-    'name': string;
+type UserType = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+}
+
+export type PreviewOfferType = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: {
+    name: string;
+    location: Location;
   };
-  'description': string;
-  'goods': string[];
-  'host': {
-    'avatarUrl': string;
-    'id': number;
-    'isPro': boolean;
-    'name': string;
-  };
-  'id': number;
-  'images': string[];
-  'isFavorite': boolean;
-  'isPremium': boolean;
-  'location': Location;
-  'maxAdults': number;
-  'previewImage': string;
-  'price': number;
-  'rating': number;
-  'title': string;
-  'type': string;
+  location: Location;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  previewImage: string;
+}
+
+export type OfferType = PreviewOfferType & {
+  bedrooms: number;
+  description: string;
+  host: UserType;
+  images: string[];
+  maxAdults: number;
+  goods: string[];
 }
 
 export type ReviewType = {
-  'comment': string;
-  'date': string;
-  'id': number;
-  'rating': number;
-  'user': {
-    'avatarUrl': string;
-    'id': number;
-    'isPro': boolean;
-    'name': string;
-  };
+  id: string;
+  date: string;
+  user: UserType;
+  comment: string;
+  rating: number;
 }
 
-export type NearPlacesType = {
-  bedrooms: number;
-  city: {
-    location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-    };
-    name: string;
-  };
-  description: string;
-  goods: string[];
-  host: {
-    avatarUrl: string;
-    id: number;
-    isPro: boolean;
-    name: string;
-  };
-  id: number;
-  images: string[];
-  isFavorite: boolean;
-  isPremium: boolean;
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  maxAdults: number;
-  previewImage: string;
-  price: number;
+export type PostReviewType = {
+  id: string;
   rating: number;
-  title: string;
-  type: string;
-}
+  comment: string;
+};
 
 export type AuthData = {
   login: string;

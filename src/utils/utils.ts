@@ -1,7 +1,7 @@
 import {AuthorizationStatus, SortOption} from '../const';
-import {OfferType, TypeState} from '../types/types';
+import {PreviewOfferType, ReviewType, TypeState} from '../types/types';
 
-function sortByOption (offers: OfferType[], activeSortedType: string) {
+function sortByOption (offers: PreviewOfferType[], activeSortedType: string) {
   switch (activeSortedType) {
     case SortOption.Popular:
       return offers;
@@ -21,4 +21,8 @@ function chechkAuthStatus (state: TypeState): boolean {
   return authorizationStatus === AuthorizationStatus.Auth;
 }
 
-export {sortByOption, chechkAuthStatus};
+const getRatingWidth = function(rating:ReviewType['rating']):number {
+  return Math.round(rating) * 20;
+};
+
+export {sortByOption, chechkAuthStatus, getRatingWidth};
