@@ -1,14 +1,13 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
-import { PreviewOfferType } from '../../types/types';
+import { PreviewOfferType, TypeState } from '../../types/types';
 import FavoriteCard from '../../components/favorite-card/favorite-card';
+import { useAppSelector } from '../../hooks';
 
-type FavoritesProps = {
-  offerData: PreviewOfferType[];
-};
+function Favorites(): JSX.Element {
+  const offers = useAppSelector((state: TypeState) => state.favorites);
 
-function Favorites({ offerData }: FavoritesProps): JSX.Element {
   return (
     <div className="page">
       <Helmet>
@@ -21,7 +20,7 @@ function Favorites({ offerData }: FavoritesProps): JSX.Element {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {offerData.map((item: PreviewOfferType) => (
+              {offers.map((item: PreviewOfferType) => (
                 // <OfferCard key={item.id} offer={item} />
                 <li className="favorites__locations-items" key={item.id}>
                   <div className="favorites__locations locations locations--current">

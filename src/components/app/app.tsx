@@ -7,16 +7,11 @@ import Favorites from '../../pages/favorites/favorites';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import {PreviewOfferType} from '../../types/types';
 import { useAppSelector } from '../../hooks';
 import HistoryRouter from '../history-router/history-router';
 import browserHistory from '../../browser-history';
 
-type AppProps = {
-  offerData: PreviewOfferType[];
-}
-
-function App({offerData}: AppProps): JSX.Element {
+function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
@@ -49,7 +44,7 @@ function App({offerData}: AppProps): JSX.Element {
                 restrictedFor={authorizationStatus}
                 redirectTo={AppRoute.Login}
               >
-                <Favorites offerData={offerData} />
+                <Favorites />
               </PrivateRoute>
             }
           />
