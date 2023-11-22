@@ -7,14 +7,14 @@ import { chechkAuthStatus } from '../../utils/utils';
 function Nav(): JSX.Element {
   const isAuth = useAppSelector(chechkAuthStatus);
   const getCurrentHeaderItem = useMemo(
-    () => (isAuth) ? LoggedInNav : LoggedOutNav,
+    () => (isAuth) ? <LoggedInNav /> : <LoggedOutNav />,
     [isAuth]
   );
 
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
-        {getCurrentHeaderItem()}
+        {getCurrentHeaderItem}
       </ul>
     </nav>
   );

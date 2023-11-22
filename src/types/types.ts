@@ -7,6 +7,12 @@ type Location = {
   'zoom': number;
 }
 
+type UserType = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+}
+
 export type PreviewOfferType = {
   id: string;
   title: string;
@@ -23,39 +29,19 @@ export type PreviewOfferType = {
   previewImage: string;
 }
 
-export type OfferType = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: {
-    name: string;
-    location: Location;
-  };
-  location: Location;
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-  description: string;
+export type OfferType = PreviewOfferType & {
   bedrooms: number;
-  goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  description: string;
+  host: UserType;
   images: string[];
   maxAdults: number;
+  goods: string[];
 }
 
 export type ReviewType = {
   id: string;
   date: string;
-  user: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  user: UserType;
   comment: string;
   rating: number;
 }

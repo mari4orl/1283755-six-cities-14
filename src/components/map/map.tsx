@@ -8,9 +8,8 @@ import { PreviewOfferType } from '../../types/types';
 type MapProps = {
   points: PreviewOfferType[];
   city: PreviewOfferType['city'];
-  selectedPoint?: PreviewOfferType | undefined;
+  selectedPoint?: PreviewOfferType['id'] | undefined;
   className: string;
-  // currentPoint?: OfferType; //TODO
 };
 
 const defaultCustomIcon = leaflet.icon({
@@ -43,7 +42,7 @@ function Map({city, points, selectedPoint, className}: MapProps): JSX.Element {
             lat: point.location.latitude,
             lng: point.location.longitude,
           }, {
-            icon: (selectedPoint) && (point.id === selectedPoint.id)
+            icon: (selectedPoint) && (point.id === selectedPoint)
               ? currentCustomIcon
               : defaultCustomIcon,
           })

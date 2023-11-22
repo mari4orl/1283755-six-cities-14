@@ -46,7 +46,7 @@ function Main(): JSX.Element {
                 </div>
               </section>
               <div className="cities__right-section">
-                <Map points={currentOffers} city={currentOffers[0].city} selectedPoint={activeOffer} className={'cities__map'} />
+                <Map points={currentOffers} city={currentOffers[0].city} selectedPoint={activeOffer?.id} className={'cities__map'} />
               </div>
             </div>
           ) : (

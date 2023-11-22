@@ -13,6 +13,7 @@ import { chechkAuthStatus, getRatingWidth } from '../../utils/utils';
 import { MAX_NEAR_PLACES, Status } from '../../const';
 import Loading from '../loading/loading';
 import ButtonBookmark from '../../components/bookmark/bookmark';
+import { OfferType, PreviewOfferType } from '../../types/types';
 
 function Offer(): JSX.Element {
   const {offerId} = useParams();
@@ -31,10 +32,34 @@ function Offer(): JSX.Element {
     };
   }, [offerId, dispatch]);
 
-  const currentOffer = useAppSelector((state) => state.offer);
-  const nearPlacesToRender = useAppSelector((state) => state.nearPlaces).slice(0, MAX_NEAR_PLACES);
+  const currentOffer = useAppSelector((state): OfferType | null => state.offer);
+  const nearPlacesToRender = useAppSelector((state): PreviewOfferType[] => state.nearPlaces).slice(0, MAX_NEAR_PLACES);
   const status = useAppSelector((state) => state.statusOffer);
   const isAuth = useAppSelector(chechkAuthStatus);
+
+  const minimizeCurrentOffer = (offer: OfferType): PreviewOfferType => ({
+    id: offer.id,
+    title: offer.title,
+    type: offer.type,
+    price: offer.price,
+    city: {
+      name: offer.city.name,
+      location: {
+        latitude: offer.city.location.latitude,
+        longitude: offer.city.location.longitude,
+        zoom: offer.city.location.zoom
+      },
+    },
+    location: {
+      latitude: offer.city.location.latitude,
+      longitude: offer.city.location.longitude,
+      zoom: offer.city.location.zoom
+    },
+    isFavorite: offer.isFavorite,
+    isPremium: offer.isPremium,
+    rating: offer.rating,
+    previewImage: offer.images[0]
+  });
 
   if (currentOffer === null || status === Status.Loading) {
     return (
@@ -46,6 +71,8 @@ function Offer(): JSX.Element {
       </div>
     );
   }
+
+  const pointsForMap = [...nearPlacesToRender, minimizeCurrentOffer(currentOffer)];
 
   const slicedImages = currentOffer.images.slice(0, 6);
 
@@ -138,7 +165,7 @@ function Offer(): JSX.Element {
               </ReviewsList>
             </div>
           </div>
-          <Map points={nearPlacesToRender} city={currentOffer.city} className={'offer__map'} />
+          <Map points={pointsForMap} selectedPoint={currentOffer.id} city={currentOffer.city} className={'offer__map'} />
         </section>
         <div className="container">
           <section className="near-places places">
