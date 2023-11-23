@@ -51,9 +51,9 @@ function Offer(): JSX.Element {
       },
     },
     location: {
-      latitude: offer.city.location.latitude,
-      longitude: offer.city.location.longitude,
-      zoom: offer.city.location.zoom
+      latitude: offer.location.latitude,
+      longitude: offer.location.longitude,
+      zoom: offer.location.zoom
     },
     isFavorite: offer.isFavorite,
     isPremium: offer.isPremium,

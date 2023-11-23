@@ -34,6 +34,7 @@ export enum APIRoute {
   Comments = '/comments',
   Login = '/login',
   Logout = '/logout',
+  Favorite = '/favorite'
 }
 
 export enum Status {
@@ -55,3 +56,14 @@ export const ReviewLenght = {
   Max: 300,
   Min: 50
 } as const;
+
+
+export enum NameSpace {
+  App = 'APP',
+  User = 'USER',
+  Offers = 'OFFERS',
+  Reviews = 'REVIEWS',
+  Favorites = 'FAVORITES',
+  NearPlaces = 'NEAR_PLACES',
+  Offer = 'OFFER',
+}
