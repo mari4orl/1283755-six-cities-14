@@ -14,7 +14,7 @@ const initialState: OffersData = {
 };
 
 export const offersData = createSlice({
-  name: NameSpace.User,
+  name: NameSpace.Offers,
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -26,7 +26,7 @@ export const offersData = createSlice({
       .addCase(fetchOffersAction.pending, (state) => {
         state.statusOffers = Status.Loading;
       })
-      .addCase(fetchOffersAction.pending, (state) => {
+      .addCase(fetchOffersAction.rejected, (state) => {
         state.statusOffers = Status.Error;
       });
   }

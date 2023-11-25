@@ -65,6 +65,11 @@ export type UserData = {
   token: string;
 };
 
+export type FavoriteData = {
+  id: string;
+  status: number;
+}
+
 export type TypeState = ReturnType<typeof store.getState>;
 export type TypeAppDispatch = typeof store.dispatch;
 

@@ -8,12 +8,15 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useEffect } from 'react';
 import { fetchReviewsAction, fetchNearPlacesAction, fetchOfferAction } from '../../store/api-actions';
 import { useParams } from 'react-router-dom';
-import { dropOffer } from '../../store/action';
-import { chechkAuthStatus, getRatingWidth } from '../../utils/utils';
-import { MAX_NEAR_PLACES, Status } from '../../const';
+import { getRatingWidth } from '../../utils/utils';
+import { Status } from '../../const';
 import Loading from '../loading/loading';
 import ButtonBookmark from '../../components/bookmark/bookmark';
 import { OfferType, PreviewOfferType } from '../../types/types';
+import { getSlicedNearPlaces } from '../../store/near-places-data/selectors';
+import { getOffer, getOfferStatus } from '../../store/offer-data/selectors';
+import {dropOffer} from '../../store/offer-data/offer-data';
+import { getAuthCheckedStatus } from '../../store/user-process/selectors';
 
 function Offer(): JSX.Element {
   const {offerId} = useParams();
@@ -32,10 +35,10 @@ function Offer(): JSX.Element {
     };
   }, [offerId, dispatch]);
 
-  const currentOffer = useAppSelector((state): OfferType | null => state.offer);
-  const nearPlacesToRender = useAppSelector((state): PreviewOfferType[] => state.nearPlaces).slice(0, MAX_NEAR_PLACES);
-  const status = useAppSelector((state) => state.statusOffer);
-  const isAuth = useAppSelector(chechkAuthStatus);
+  const currentOffer = useAppSelector(getOffer);
+  const nearPlacesToRender = useAppSelector(getSlicedNearPlaces);
+  const status = useAppSelector(getOfferStatus);
+  const isAuth = useAppSelector(getAuthCheckedStatus);
 
   const minimizeCurrentOffer = (offer: OfferType): PreviewOfferType => ({
     id: offer.id,

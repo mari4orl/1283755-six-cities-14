@@ -9,6 +9,7 @@ import {
   TypeState,
   UserData,
   OfferType,
+  FavoriteData,
 } from '../types/types';
 import {
   redirectToRoute,
@@ -70,6 +71,15 @@ export const fetchFavoritesAction = createAsyncThunk<PreviewOfferType[], undefin
     const {data} = await api.get<PreviewOfferType[]>(APIRoute.Favorite);
     return data;
   },
+);
+
+
+export const postFavoriteStatusAction = createAsyncThunk<OfferType, FavoriteData, ExtraType>(
+  `${NameSpace.Favorites}/postFavorite`,
+  async ({ id, status }, { extra: api }) => {
+    const { data } = await api.post<OfferType>(`${APIRoute.Favorite}/${id}/${status}`);
+    return data;
+  }
 );
 
 export const checkAuthAction = createAsyncThunk<UserData, undefined, ExtraType>(

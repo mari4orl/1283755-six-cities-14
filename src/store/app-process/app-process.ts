@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {CityName, NameSpace, SortOption} from '../../const';
+import { SortingType } from '../../types/types';
 
 type AppProcess = {
   activeCity: CityName;
-  activeSortedType: string;
+  activeSortedType: typeof SortOption[SortingType];
 };
 
 const initialState: AppProcess = {
@@ -18,7 +19,7 @@ export const appProcess = createSlice({
     changeActiveCity: (state, action: PayloadAction<CityName>) => {
       state.activeCity = action.payload;
     },
-    setSortedType: (state, action: PayloadAction<string>) => {
+    setSortedType: (state, action: PayloadAction<typeof SortOption[SortingType]>) => {
       state.activeSortedType = action.payload;
     }
   },

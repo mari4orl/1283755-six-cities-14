@@ -1,8 +1,8 @@
 import {Fragment} from 'react';
 import {ChangeEvent} from 'react';
 import { useAppSelector } from '../../hooks';
-import { TypeState } from '../../types/types';
 import { Status } from '../../const';
+import { getStatusPost } from '../../store/reviews-data/selectors';
 
 const ratingReview = [
   {title: 'perfect', value: '5'},
@@ -18,9 +18,7 @@ type RatingProp = {
 }
 
 function Rating({rating, onChange}: RatingProp) {
-  const statusPost = useAppSelector(
-    (state: TypeState): Status => state.statusPost
-  );
+  const statusPost = useAppSelector(getStatusPost);
 
   return (
     <div className="reviews__rating-form form__rating">

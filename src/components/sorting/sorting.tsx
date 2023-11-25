@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { SortOption } from '../../const';
-import { SortingType, TypeState } from '../../types/types';
+import { SortingType } from '../../types/types';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setSortedType } from '../../store/action';
+import { setSortedType } from '../../store/app-process/app-process';
+import { getActiveSortedType } from '../../store/app-process/selectors';
 
 
 function Sorting(): JSX.Element {
   const values: typeof SortOption[SortingType][] = Object.values(SortOption);
 
   const [isOpened, setIsOpened] = useState(false);
-  const activeSortedType = useAppSelector((state: TypeState): typeof SortOption[SortingType] => state.activeSortedType);
+  const activeSortedType = useAppSelector(getActiveSortedType);
   const dispatch = useAppDispatch();
   function handleTypeClick() {
     setIsOpened((prevIsOpened) => !prevIsOpened);
@@ -24,7 +25,7 @@ function Sorting(): JSX.Element {
   }
 
   function handleOnClickOption(clickedOption: typeof SortOption[SortingType]) {
-    dispatch(setSortedType({activeSortedType: clickedOption}));
+    dispatch(setSortedType(clickedOption));
   }
 
   return (

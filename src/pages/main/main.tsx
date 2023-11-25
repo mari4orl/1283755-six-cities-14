@@ -2,25 +2,31 @@ import Header from '../../components/header/header';
 import { PreviewOfferType } from '../../types/types';
 import OfferList from '../../components/offer-list/offer-list';
 import Map from '../../components/map/map';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useAppSelector } from '../../hooks/index';
 import LocationList from '../../components/location-list/location-list';
-import { TypeState } from '../../types/types';
 import Sorting from '../../components/sorting/sorting';
 import {sortByOption} from '../../utils/utils';
+import { getActiveCity, getActiveSortedType } from '../../store/app-process/selectors';
+import { getFilteredOffers, getOffersStatus } from '../../store/offers-data/selectors';
+import Loading from '../loading/loading';
+import { Status } from '../../const';
 
 function Main(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<PreviewOfferType | undefined>();
 
-  const offers: PreviewOfferType[] = useAppSelector((state: TypeState) => state.offers);
-  const activeCity = useAppSelector((state: TypeState): string => state.activeCity);
-  const filteredOffers = offers.filter((offer) => offer.city.name === activeCity);
+  const offers: PreviewOfferType[] = useAppSelector(getFilteredOffers);
+  const status = useAppSelector(getOffersStatus);
+  const activeCity = useAppSelector(getActiveCity);
 
-  const activeSortType = useAppSelector((state: TypeState): string => state.activeSortedType);
-  const currentOffers = sortByOption(filteredOffers, activeSortType);
+  const activeSortType = useAppSelector(getActiveSortedType);
+  const currentOffers = useMemo(
+    () => sortByOption(offers, activeSortType),
+    [activeSortType, offers]
+  );
 
   const handleListItemHover = (selectedCardId:PreviewOfferType['id'] | null) => {
-    const currentPoint: PreviewOfferType | undefined = filteredOffers.find((offer) =>
+    const currentPoint: PreviewOfferType | undefined = offers.find((offer) =>
       offer.id === selectedCardId,
     );
     setActiveOffer(currentPoint);
@@ -28,6 +34,9 @@ function Main(): JSX.Element {
 
   return (
     <div className="page page--gray page--main">
+      {status === Status.Loading && (
+        <Loading />
+      )}
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>

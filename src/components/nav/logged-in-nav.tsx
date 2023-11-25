@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 import { AppRoute } from '../../const';
-import { PreviewOfferType, TypeState, UserData } from '../../types/types';
+import { getUser } from '../../store/user-process/selectors';
+import { getFavoritesOffers } from '../../store/favorites-data/selectors';
 
 function LoggedInNav(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state: TypeState): UserData|null => state.user);
-  const favorites = useAppSelector((state: TypeState): PreviewOfferType[] => state.favorites);
+  const user = useAppSelector(getUser);
+  const favorites = useAppSelector(getFavoritesOffers);
   return (
     <>
       <li className="header__nav-item user">
