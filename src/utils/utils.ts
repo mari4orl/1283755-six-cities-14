@@ -1,5 +1,5 @@
-import {AuthorizationStatus, SortOption} from '../const';
-import {PreviewOfferType, ReviewType, TypeState} from '../types/types';
+import {SortOption} from '../const';
+import {PreviewOfferType, ReviewType} from '../types/types';
 
 function sortByOption (offers: PreviewOfferType[], activeSortedType: string) {
   switch (activeSortedType) {
@@ -16,13 +16,8 @@ function sortByOption (offers: PreviewOfferType[], activeSortedType: string) {
   }
 }
 
-function chechkAuthStatus (state: TypeState): boolean {
-  const authorizationStatus = state.authorizationStatus;
-  return authorizationStatus === AuthorizationStatus.Auth;
-}
-
 const getRatingWidth = function(rating:ReviewType['rating']):number {
   return Math.round(rating) * 20;
 };
 
-export {sortByOption, chechkAuthStatus, getRatingWidth};
+export {sortByOption, getRatingWidth};

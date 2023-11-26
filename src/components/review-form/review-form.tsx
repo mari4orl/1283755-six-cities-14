@@ -1,19 +1,17 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Rating from '../rating/rating';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { TypeState } from '../../types/types';
 import { ReviewLenght, Status } from '../../const';
 import { postReviewAction } from '../../store/api-actions';
 import styles from './review-form.module.css';
+import { getStatusPost } from '../../store/reviews-data/selectors';
 
 type RatingFormProps = {
   offerId: string;
 };
 
 function ReviewForm({ offerId }: RatingFormProps): JSX.Element {
-  const statusPost = useAppSelector(
-    (state: TypeState): Status => state.statusPost
-  );
+  const statusPost = useAppSelector(getStatusPost);
 
   const dispatch = useAppDispatch();
   const [review, setReview] = useState({

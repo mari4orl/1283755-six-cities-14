@@ -1,12 +1,13 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
-import { PreviewOfferType, TypeState } from '../../types/types';
+import { PreviewOfferType } from '../../types/types';
 import FavoriteCard from '../../components/favorite-card/favorite-card';
 import { useAppSelector } from '../../hooks';
+import { getFavoritesOffers } from '../../store/offers-data/selectors';
 
 function Favorites(): JSX.Element {
-  const offers = useAppSelector((state: TypeState) => state.favorites);
+  const offers = useAppSelector(getFavoritesOffers);
 
   return (
     <div className="page">

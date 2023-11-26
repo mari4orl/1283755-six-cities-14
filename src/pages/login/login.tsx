@@ -4,13 +4,13 @@ import { Link, Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { FormEvent, useRef } from 'react';
-import { chechkAuthStatus } from '../../utils/utils';
+import { getAuthCheckedStatus } from '../../store/user-process/selectors';
 
 function Login(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
-  const isAuth = useAppSelector(chechkAuthStatus);
+  const isAuth = useAppSelector(getAuthCheckedStatus);
 
   if (isAuth) {
     return (

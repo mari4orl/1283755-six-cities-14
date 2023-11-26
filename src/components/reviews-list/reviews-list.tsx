@@ -1,12 +1,13 @@
 import Review from '../review/review';
-import { ReviewType, TypeState } from '../../types/types';
+import { ReviewType } from '../../types/types';
 import { useAppSelector } from '../../hooks';
 import { PropsWithChildren } from 'react';
 import { MAX_REVIEWS } from '../../const';
+import { getReviews } from '../../store/reviews-data/selectors';
 
 
 function ReviewsList({children}: PropsWithChildren): JSX.Element {
-  const reviews = useAppSelector((state: TypeState): ReviewType[] => state.reviews);
+  const reviews = useAppSelector(getReviews);
 
   const sortedReviews = [...reviews]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
