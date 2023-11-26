@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { PreviewOfferType } from '../../types/types';
 import FavoriteCard from '../../components/favorite-card/favorite-card';
 import { useAppSelector } from '../../hooks';
-import { getFavoritesOffers } from '../../store/favorites-data/selectors';
+import { getFavoritesOffers } from '../../store/offers-data/selectors';
 
 function Favorites(): JSX.Element {
   const offers = useAppSelector(getFavoritesOffers);

@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 import { AppRoute } from '../../const';
 import { getUser } from '../../store/user-process/selectors';
-import { getFavoritesOffers } from '../../store/favorites-data/selectors';
+import { getFavoritesOffers } from '../../store/offers-data/selectors';
 
 function LoggedInNav(): JSX.Element {
   const dispatch = useAppDispatch();

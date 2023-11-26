@@ -13,8 +13,7 @@ import { Status } from '../../const';
 import Loading from '../loading/loading';
 import ButtonBookmark from '../../components/bookmark/bookmark';
 import { OfferType, PreviewOfferType } from '../../types/types';
-import { getSlicedNearPlaces } from '../../store/near-places-data/selectors';
-import { getOffer, getOfferStatus } from '../../store/offer-data/selectors';
+import { getNearPlaces, getOffer, getOfferStatus } from '../../store/offer-data/selectors';
 import {dropOffer} from '../../store/offer-data/offer-data';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
 
@@ -36,7 +35,7 @@ function Offer(): JSX.Element {
   }, [offerId, dispatch]);
 
   const currentOffer = useAppSelector(getOffer);
-  const nearPlacesToRender = useAppSelector(getSlicedNearPlaces);
+  const nearPlaces = useAppSelector(getNearPlaces);
   const status = useAppSelector(getOfferStatus);
   const isAuth = useAppSelector(getAuthCheckedStatus);
 
@@ -75,7 +74,7 @@ function Offer(): JSX.Element {
     );
   }
 
-  const pointsForMap = [...nearPlacesToRender, minimizeCurrentOffer(currentOffer)];
+  const pointsForMap = [...nearPlaces, minimizeCurrentOffer(currentOffer)];
 
   const slicedImages = currentOffer.images.slice(0, 6);
 
@@ -176,7 +175,7 @@ function Offer(): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              <OfferList offerData={nearPlacesToRender} className='near-places__card' />
+              <OfferList offerData={nearPlaces} className='near-places__card' />
             </div>
           </section>
         </div>

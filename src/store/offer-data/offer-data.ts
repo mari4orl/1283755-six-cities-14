@@ -1,16 +1,20 @@
-import {OfferType} from '../../types/types';
+import {OfferType, PreviewOfferType} from '../../types/types';
 import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace, Status} from '../../const';
-import {fetchOfferAction} from '../api-actions';
+import {MAX_NEAR_PLACES, NameSpace, Status} from '../../const';
+import {fetchNearPlacesAction, fetchOfferAction, postFavoriteStatusAction} from '../api-actions';
 
 type offerData = {
-  statusOffer: Status;
+  fetchingStatus: Status;
   offer: OfferType | null;
+  nearPlaces: PreviewOfferType[];
+  fetchingNearPlacesStatus: Status;
 };
 
 const initialState: offerData = {
-  statusOffer: Status.Idle,
+  fetchingStatus: Status.Idle,
   offer: null,
+  nearPlaces: [],
+  fetchingNearPlacesStatus: Status.Idle
 };
 
 export const offerData = createSlice({
@@ -19,19 +23,37 @@ export const offerData = createSlice({
   reducers: {
     dropOffer: (state) => {
       state.offer = null;
+      state.nearPlaces = [];
     }
   },
   extraReducers(builder) {
     builder
       .addCase(fetchOfferAction.pending, (state) => {
-        state.statusOffer = Status.Loading;
+        state.fetchingStatus = Status.Loading;
       })
       .addCase(fetchOfferAction.fulfilled, (state, action) => {
         state.offer = action.payload;
-        state.statusOffer = Status.Success;
+        state.fetchingStatus = Status.Success;
       })
       .addCase(fetchOfferAction.rejected, (state) => {
-        state.statusOffer = Status.Error;
+        state.fetchingStatus = Status.Error;
+      })
+      .addCase(fetchNearPlacesAction.pending, (state) => {
+        state.fetchingNearPlacesStatus = Status.Loading;
+      })
+      .addCase(fetchNearPlacesAction.fulfilled, (state, action) => {
+        state.nearPlaces = action.payload.slice(0, MAX_NEAR_PLACES);
+        state.fetchingNearPlacesStatus = Status.Success;
+      })
+      .addCase(fetchNearPlacesAction.rejected, (state) => {
+        state.fetchingNearPlacesStatus = Status.Error;
+      })
+      .addCase(postFavoriteStatusAction.fulfilled, (state, action) => {
+        const {isFavorite} = action.payload;
+
+        if (state.offer) {
+          state.offer.isFavorite = isFavorite;
+        }
       });
   }
 });

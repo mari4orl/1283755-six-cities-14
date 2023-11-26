@@ -8,7 +8,7 @@ export const getOffers = (state: TypeState): PreviewOfferType[] => (
 );
 
 export const getOffersStatus = (state: TypeState): Status => (
-  state[NameSpace.Offers].statusOffers
+  state[NameSpace.Offers].fetchingStatus
 );
 
 export const getFilteredOffers = createSelector(
@@ -17,3 +17,7 @@ export const getFilteredOffers = createSelector(
     offers.filter((offer) => offer.city.name === activeCity)
   )
 );
+
+export const getFavoritesOffers = (state: TypeState): PreviewOfferType[] => state[NameSpace.Offers].favorites;
+
+export const getFavoritesStatus = (state: TypeState): Status => state[NameSpace.Offers].fetchingFavoritesStatus;

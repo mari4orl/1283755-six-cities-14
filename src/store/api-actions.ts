@@ -58,7 +58,7 @@ export const fetchNearPlacesAction = createAsyncThunk<
   PreviewOfferType[],
   PreviewOfferType['id'],
   ExtraType
->(`${NameSpace.NearPlaces}/fetchNearPlaces`, async (offerId, { extra: api }) => {
+>(`${NameSpace.Offer}/fetchNearPlaces`, async (offerId, { extra: api }) => {
   const { data } = await api.get<PreviewOfferType[]>(
     `${APIRoute.Offers}/${offerId}${APIRoute.Nearby}`
   );
@@ -77,7 +77,7 @@ export const fetchFavoritesAction = createAsyncThunk<PreviewOfferType[], undefin
 export const postFavoriteStatusAction = createAsyncThunk<OfferType, FavoriteData, ExtraType>(
   `${NameSpace.Favorites}/postFavorite`,
   async ({ id, status }, { extra: api }) => {
-    const { data } = await api.post<OfferType>(`${APIRoute.Favorite}/${id}/${status}`);
+    const { data } = await api.post<OfferType>(`${APIRoute.Favorite}/${id}/${Number(!status)}`);
     return data;
   }
 );
