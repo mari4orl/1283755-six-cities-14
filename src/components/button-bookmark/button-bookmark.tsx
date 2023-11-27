@@ -1,6 +1,6 @@
 import cn from 'classnames';
-import {memo, useState, MouseEvent} from 'react';
-import {PreviewOfferType} from '../../types/types';
+import { memo, useState, MouseEvent } from 'react';
+import { PreviewOfferType } from '../../types/types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';

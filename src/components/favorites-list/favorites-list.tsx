@@ -1,6 +1,6 @@
-import {PreviewOfferType} from '../../types/types';
-import {useAppSelector} from '../../hooks';
-import {getFavoritesOffers} from '../../store/offers-data/selectors';
+import { PreviewOfferType } from '../../types/types';
+import { useAppSelector } from '../../hooks';
+import { getFavoritesOffers } from '../../store/offers-data/selectors';
 import FavoriteCard from '../favorite-card/favorite-card';
 
 function getFavoritesByCity(favorites: PreviewOfferType[]){

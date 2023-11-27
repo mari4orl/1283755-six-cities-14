@@ -43,15 +43,15 @@ export const offersData = createSlice({
       .addCase(postFavoriteStatusAction.fulfilled, (state, action) => {
         const {id, isFavorite} = action.payload;
 
-        state.offers = state.offers.map((item) => {
-          if (item.id === id) {
+        state.offers = state.offers.map((offer) => {
+          if (offer.id === id) {
             return {
-              ...item,
+              ...offer,
               isFavorite
             };
           }
 
-          return item;
+          return offer;
         });
 
         if (isFavorite) {

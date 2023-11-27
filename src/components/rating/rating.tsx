@@ -1,5 +1,5 @@
-import {Fragment} from 'react';
-import {ChangeEvent} from 'react';
+import { Fragment } from 'react';
+import { ChangeEvent } from 'react';
 import { useAppSelector } from '../../hooks';
 import { Status } from '../../const';
 import { getStatusPost } from '../../store/reviews-data/selectors';

@@ -1,6 +1,6 @@
-import {AuthorizationStatus, NameSpace} from '../../const';
-import {TypeState, UserData} from '../../types/types';
-import {createSelector} from '@reduxjs/toolkit';
+import { AuthorizationStatus, NameSpace } from '../../const';
+import { TypeState, UserData } from '../../types/types';
+import { createSelector } from '@reduxjs/toolkit';
 
 export const getAuthStatus = (state: TypeState): AuthorizationStatus => (
   state[NameSpace.User].authorizationStatus

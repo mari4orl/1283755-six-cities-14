@@ -1,7 +1,7 @@
-import axios, {AxiosInstance, InternalAxiosRequestConfig, AxiosError} from 'axios';
-import {getToken} from './token';
-import {StatusCodes} from 'http-status-codes';
-import {toast} from 'react-toastify';
+import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosError } from 'axios';
+import { getToken } from './token';
+import { StatusCodes } from 'http-status-codes';
+import { toast } from 'react-toastify';
 import browserHistory from '../browser-history';
 import { AppRoute } from '../const';
 
@@ -39,10 +39,6 @@ export const createAPI = (): AxiosInstance => {
         toast.warn(detailMessage.message);
 
         browserHistory.push(AppRoute.NotFound);
-      }
-
-      if (error.response?.status === StatusCodes.UNAUTHORIZED) {
-        toast.warn('unauthorized!');
       }
 
       if (error.response?.status === StatusCodes.BAD_REQUEST) {

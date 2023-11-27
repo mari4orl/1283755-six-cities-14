@@ -2,12 +2,13 @@ import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import OfferList from '../../components/offer-list/offer-list';
-import { getRatingWidth } from '../../utils/utils';
+import { getPluralEnding, getRatingWidth } from '../../utils/utils';
 import ButtonBookmark from '../../components/button-bookmark/button-bookmark';
 import { OfferType, PreviewOfferType } from '../../types/types';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
 import { useAppSelector } from '../../hooks';
 import { getNearPlaces } from '../../store/offer-data/selectors';
+import cn from 'classnames';
 
 type OfferContentProps = {
   offer: OfferType;
@@ -81,10 +82,10 @@ function OfferContent({offer}: OfferContentProps): JSX.Element {
                 {offer.type}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
-                {offer.bedrooms} Bedrooms
+                {offer.bedrooms} Bedroom{getPluralEnding(offer.bedrooms)}
               </li>
               <li className="offer__feature offer__feature--adults">
-                Max {offer.maxAdults} adults
+                Max {offer.maxAdults} adult{getPluralEnding(offer.maxAdults)}
               </li>
             </ul>
             <div className="offer__price">
@@ -104,7 +105,11 @@ function OfferContent({offer}: OfferContentProps): JSX.Element {
             <div className="offer__host">
               <h2 className="offer__host-title">Meet the host</h2>
               <div className="offer__host-user user">
-                <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
+                <div
+                  className={cn('offer__avatar-wrapper user__avatar-wrapper', {
+                    'offer__avatar-wrapper--pro': offer.host.isPro,
+                  })}
+                >
                   <img className="offer__avatar user__avatar"
                     src={offer.host.avatarUrl}
                     width={74}
@@ -113,7 +118,7 @@ function OfferContent({offer}: OfferContentProps): JSX.Element {
                   />
                 </div>
                 <span className="offer__user-name">{offer.host.name}</span>
-                <span className="offer__user-status">{offer.host.isPro}</span>
+                {offer.host.isPro && <span className="offer__user-status">Pro</span>}
               </div>
               <div className="offer__description">
                 <p className="offer__text">
