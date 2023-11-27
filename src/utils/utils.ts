@@ -1,5 +1,5 @@
-import {SortOption} from '../const';
-import {PreviewOfferType, ReviewType} from '../types/types';
+import { SortOption } from '../const';
+import { PreviewOfferType, ReviewType } from '../types/types';
 
 function sortByOption (offers: PreviewOfferType[], activeSortedType: string) {
   switch (activeSortedType) {
@@ -16,8 +16,12 @@ function sortByOption (offers: PreviewOfferType[], activeSortedType: string) {
   }
 }
 
-const getRatingWidth = function(rating:ReviewType['rating']):number {
+function getRatingWidth(rating:ReviewType['rating']):number {
   return Math.round(rating) * 20;
-};
+}
 
-export {sortByOption, getRatingWidth};
+function getPluralEnding(length: number) {
+  return length > 1 ? 's' : '';
+}
+
+export {sortByOption, getRatingWidth, getPluralEnding};

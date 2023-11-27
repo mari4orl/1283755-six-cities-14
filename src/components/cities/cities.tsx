@@ -1,5 +1,5 @@
 import Sorting from '../sorting/sorting';
-import { sortByOption } from '../../utils/utils';
+import { getPluralEnding, sortByOption } from '../../utils/utils';
 import {
   getActiveCity,
   getActiveSortedType,
@@ -50,7 +50,7 @@ function Cities({ onCityChange }: CitiesProps): JSX.Element {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">
-            {currentOffers.length} places to stay in {activeCity}
+            {currentOffers.length} place{getPluralEnding(currentOffers.length)} to stay in {activeCity}
           </b>
           <Sorting />
           <div className="cities__places-list places__list tabs__content">

@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import { AppRoute } from '../../const';
+import { AppRoute, CityName } from '../../const';
 import { Link, Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { FormEvent, useRef } from 'react';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
+import { changeActiveCity } from '../../store/app-process/app-process';
 
 function Login(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -17,6 +18,8 @@ function Login(): JSX.Element {
       <Navigate to={AppRoute.Main} />
     );
   }
+
+  const randomCity = Object.values(CityName)[Math.floor(Math.random() * Object.values(CityName).length)];
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -65,9 +68,13 @@ function Login(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
-                <span>Amsterdam</span>
-              </a>
+              <Link
+                className="locations__item-link"
+                to={AppRoute.Main}
+                onClick={() => dispatch(changeActiveCity(randomCity))}
+              >
+                <span>{randomCity}</span>
+              </Link>
             </div>
           </section>
         </div>
