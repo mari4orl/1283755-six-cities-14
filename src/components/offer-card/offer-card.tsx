@@ -1,7 +1,7 @@
 import { PreviewOfferType } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import ButtonBookmark from '../bookmark/bookmark';
+import ButtonBookmark from '../button-bookmark/button-bookmark';
 import { getRatingWidth } from '../../utils/utils';
 
 type OfferProps = {
@@ -47,7 +47,7 @@ function OfferCard({ offer, onListItemHover, className }: OfferProps): JSX.Eleme
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <ButtonBookmark offer={offer} />
+          <ButtonBookmark offerId={offer.id} isFavorite={offer.isFavorite} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
