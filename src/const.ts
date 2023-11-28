@@ -50,8 +50,6 @@ export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
 export const MAX_NEAR_PLACES = 3;
 
-export const MAX_REVIEWS = 10;
-
 export const ReviewLenght = {
   Max: 300,
   Min: 50

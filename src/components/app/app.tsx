@@ -7,10 +7,10 @@ import Favorites from '../../pages/favorites/favorites';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import { useAppSelector } from '../../hooks';
 import HistoryRouter from '../history-router/history-router';
 import browserHistory from '../../browser-history';
 import { getAuthStatus } from '../../store/user-process/selectors';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthStatus);

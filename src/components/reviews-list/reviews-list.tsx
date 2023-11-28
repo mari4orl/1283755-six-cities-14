@@ -1,8 +1,7 @@
 import Review from '../review/review';
 import { ReviewType } from '../../types/types';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { PropsWithChildren } from 'react';
-import { MAX_REVIEWS } from '../../const';
 import { getReviews } from '../../store/reviews-data/selectors';
 
 
@@ -10,8 +9,7 @@ function ReviewsList({children}: PropsWithChildren): JSX.Element {
   const reviews = useAppSelector(getReviews);
 
   const sortedReviews = [...reviews]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, MAX_REVIEWS);
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <section className="offer__reviews reviews">

@@ -1,11 +1,12 @@
 import cn from 'classnames';
 import { memo, useState, MouseEvent } from 'react';
 import { PreviewOfferType } from '../../types/types';
-import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
 import { AppRoute } from '../../const';
 import { postFavoriteStatusAction } from '../../store/api-actions';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 type ButtonBookmarkProp = {
   offerId: PreviewOfferType['id'];

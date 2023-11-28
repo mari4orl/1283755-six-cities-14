@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Rating from '../rating/rating';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { ReviewLenght, Status } from '../../const';
 import { postReviewAction } from '../../store/api-actions';
 import styles from './review-form.module.css';

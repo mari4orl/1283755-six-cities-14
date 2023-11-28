@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { SortOption } from '../../const';
 import { SortingType } from '../../types/types';
 import cn from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { setSortedType } from '../../store/app-process/app-process';
 import { getActiveSortedType } from '../../store/app-process/selectors';
 

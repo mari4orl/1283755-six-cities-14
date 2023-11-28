@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { useEffect } from 'react';
-import { fetchReviewsAction, fetchNearPlacesAction, fetchOfferAction } from '../../store/api-actions';
+import { fetchReviewsAction, fetchNearPlacesAction, fetchOfferAction, fetchFavoritesAction } from '../../store/api-actions';
 import { useParams } from 'react-router-dom';
 import { Status } from '../../const';
 import Loading from '../loading/loading';
@@ -20,6 +21,7 @@ function Offer(): JSX.Element {
       dispatch(fetchOfferAction(offerId));
       dispatch(fetchNearPlacesAction(offerId));
       dispatch(fetchReviewsAction(offerId));
+      dispatch(fetchFavoritesAction());
     }
 
     return () => {

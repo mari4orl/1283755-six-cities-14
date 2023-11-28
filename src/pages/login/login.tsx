@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { AppRoute, CityName } from '../../const';
 import { Link, Navigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { loginAction } from '../../store/api-actions';
 import { FormEvent, useRef } from 'react';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';

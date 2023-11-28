@@ -6,7 +6,7 @@ import { getPluralEnding, getRatingWidth } from '../../utils/utils';
 import ButtonBookmark from '../../components/button-bookmark/button-bookmark';
 import { OfferType, PreviewOfferType } from '../../types/types';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { getNearPlaces } from '../../store/offer-data/selectors';
 import cn from 'classnames';
 

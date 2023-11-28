@@ -1,7 +1,8 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import {
   getFavoritesOffers,
   getFavoritesStatus,
@@ -19,15 +20,7 @@ function Favorites(): JSX.Element {
   const favorites = useAppSelector(getFavoritesOffers);
 
   useEffect(() => {
-    let isMounted = true;
-
-    if (isMounted) {
-      dispatch(fetchFavoritesAction());
-    }
-
-    return () => {
-      isMounted = false;
-    };
+    dispatch(fetchFavoritesAction());
   }, [dispatch]);
 
   return (
