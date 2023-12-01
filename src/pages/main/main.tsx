@@ -1,7 +1,7 @@
 import Header from '../../components/header/header';
 import { useCallback, useEffect, useState } from 'react';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import LocationList from '../../components/location-list/location-list';
 import Loading from '../loading/loading';
 import { Status } from '../../const';

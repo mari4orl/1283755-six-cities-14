@@ -24,4 +24,8 @@ function getPluralEnding(length: number) {
   return length > 1 ? 's' : '';
 }
 
-export {sortByOption, getRatingWidth, getPluralEnding};
+function capitalize(word: string) {
+  return word[0].toUpperCase() + word.slice(1);
+}
+
+export {sortByOption, getRatingWidth, getPluralEnding, capitalize};

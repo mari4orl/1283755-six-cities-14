@@ -1,5 +1,5 @@
 import { PreviewOfferType } from '../../types/types';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { getFavoritesOffers } from '../../store/offers-data/selectors';
 import FavoriteCard from '../favorite-card/favorite-card';
 

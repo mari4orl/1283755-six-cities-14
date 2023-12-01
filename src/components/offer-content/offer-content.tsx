@@ -2,13 +2,14 @@ import ReviewForm from '../../components/review-form/review-form';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import OfferList from '../../components/offer-list/offer-list';
-import { getPluralEnding, getRatingWidth } from '../../utils/utils';
+import { capitalize, getPluralEnding, getRatingWidth } from '../../utils/utils';
 import ButtonBookmark from '../../components/button-bookmark/button-bookmark';
 import { OfferType, PreviewOfferType } from '../../types/types';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { getNearPlaces } from '../../store/offer-data/selectors';
 import cn from 'classnames';
+import { MAX_PICS_AMOUNT } from '../../const';
 
 type OfferContentProps = {
   offer: OfferType;
@@ -49,7 +50,7 @@ function OfferContent({offer}: OfferContentProps): JSX.Element {
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
-            {offer.images.slice(0, 6).map((src): JSX.Element => (
+            {offer.images.slice(0, MAX_PICS_AMOUNT).map((src): JSX.Element => (
               <div key={src} className="offer__image-wrapper">
                 <a href="#">
                   <img className="offer__image" src={src} alt="Photo studio" />
@@ -79,7 +80,7 @@ function OfferContent({offer}: OfferContentProps): JSX.Element {
             </div>
             <ul className="offer__features">
               <li className="offer__feature offer__feature--entire">
-                {offer.type}
+                {capitalize(offer.type)}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
                 {offer.bedrooms} Bedroom{getPluralEnding(offer.bedrooms)}

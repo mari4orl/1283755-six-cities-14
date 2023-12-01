@@ -7,7 +7,7 @@ import {
 import { getFilteredOffers } from '../../store/offers-data/selectors';
 import { useMemo, useState } from 'react';
 import { PreviewOfferType } from '../../types/types';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import OfferList from '../offer-list/offer-list';
 import MainEmpty from '../main-empty/main-empty';
 import Map from '../map/map';

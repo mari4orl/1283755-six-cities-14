@@ -1,6 +1,6 @@
 import { CityName } from '../../const';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import classNames from 'classnames';
 import { getActiveCity } from '../../store/app-process/selectors';
 import { changeActiveCity } from '../../store/app-process/app-process';

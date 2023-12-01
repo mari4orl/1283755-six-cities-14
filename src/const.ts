@@ -52,6 +52,8 @@ export const MAX_NEAR_PLACES = 3;
 
 export const MAX_REVIEWS = 10;
 
+export const MAX_PICS_AMOUNT = 6;
+
 export const ReviewLenght = {
   Max: 300,
   Min: 50
@@ -64,6 +66,5 @@ export enum NameSpace {
   Offers = 'OFFERS',
   Reviews = 'REVIEWS',
   Favorites = 'FAVORITES',
-  NearPlaces = 'NEAR_PLACES',
   Offer = 'OFFER',
 }

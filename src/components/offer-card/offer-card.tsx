@@ -2,7 +2,7 @@ import { PreviewOfferType } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import ButtonBookmark from '../button-bookmark/button-bookmark';
-import { getRatingWidth } from '../../utils/utils';
+import { capitalize, getRatingWidth } from '../../utils/utils';
 
 type OfferProps = {
   offer: PreviewOfferType;
@@ -58,7 +58,7 @@ function OfferCard({ offer, onListItemHover, className }: OfferProps): JSX.Eleme
         <h2 className="place-card__name">
           <Link to={ `${AppRoute.Offer}/${offer.id}` }>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{offer.type}</p>
+        <p className="place-card__type">{capitalize(offer.type)}</p>
       </div>
     </article>
   );

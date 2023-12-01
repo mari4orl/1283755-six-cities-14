@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { useEffect } from 'react';
 import { fetchReviewsAction, fetchNearPlacesAction, fetchOfferAction, fetchFavoritesAction } from '../../store/api-actions';
 import { useParams } from 'react-router-dom';

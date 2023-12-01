@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { ChangeEvent } from 'react';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { Status } from '../../const';
 import { getStatusPost } from '../../store/reviews-data/selectors';
 

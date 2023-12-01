@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import LoggedInNav from './logged-in-nav';
 import LoggedOutNav from './logged-out-nav';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';

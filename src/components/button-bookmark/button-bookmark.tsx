@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { getAuthCheckedStatus } from '../../store/user-process/selectors';
 import { AppRoute } from '../../const';
 import { postFavoriteStatusAction } from '../../store/api-actions';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 
 type ButtonBookmarkProp = {
   offerId: PreviewOfferType['id'];

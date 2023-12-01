@@ -1,6 +1,6 @@
 import Review from '../review/review';
 import { ReviewType } from '../../types/types';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { PropsWithChildren } from 'react';
 import { getReviews } from '../../store/reviews-data/selectors';
 import { MAX_REVIEWS } from '../../const';
